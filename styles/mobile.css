@@ -1,0 +1,151 @@
+:root {
+  --text-color: white;
+  --bg-url: url(/assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --switch-bg-url: url(/assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(/assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: (0, 0, 0, 0.1);
+  --surface-color-hover: rgba(0, 0, 0, 0.05);
+  --switch-bg-url: url(/assets/sun.svg);
+}
+
+body {
+  /*background: color image repeat position/size */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  margin: auto;
+  margin-top: 56px;
+}
+
+.profile {
+  text-align: center;
+  padding: 24px;
+}
+.profile img {
+  width: 112px;
+}
+
+.avatar {
+  margin-bottom: 8px;
+}
+
+.profile span {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.switch {
+  /*Position relativo faz com que o position absolute fica relativel ao quadrado do .switch*/
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+.switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  /*Position absolute pode ser alinhado em qualquer canto da tela*/
+  position: absolute;
+  /*Z index muda a camada do botão, poderia ser colocado atras do span*/
+  z-index: 1;
+
+  /*Forma de centralizar o button em cima do span (light para dark)*/
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.light .switch button {
+  right: 0;
+  left: initial;
+}
+
+.switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 9999px;
+}
+
+.links {
+  /*Fazer colunas com display flex*/
+  display: flex;
+  flex-direction: column;
+  /*Utilizando espaçamentos entre os buttons*/
+  padding: 24px;
+  gap: 16px;
+}
+
+.links li a {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--stroke-color);
+  padding: 16px 24px;
+  background-color: var(--surface-color);
+  text-align: center;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.5s ease;
+}
+
+.links li a:hover {
+  border: 1px solid var(--text-color);
+  background-color: var(--surface-color-hover);
+}
+
+.links button span {
+  font-size: 18px;
+}
+
+.social-links {
+  /*Alinhamento com display flex*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0px 24px 24px;
+  gap: 32px;
+}
+
+.social-links a {
+  background-color: transparent;
+  text-decoration: none;
+}
+.logo {
+  font-size: 24px;
+  color: var(--text-color);
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  /*Aumenta o tamanho sem mudar afetar o layout*/
+  transform: scale(1.25);
+}
+
+footer {
+  /*Alinhamento textos*/
+  text-align: center;
+}
